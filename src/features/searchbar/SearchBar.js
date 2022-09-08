@@ -2,6 +2,6 @@ import React from 'react';
 
 export const SearchBar = () => {
   return (
-    <input />
+    <input type="text" className="input" />
   );
 }
