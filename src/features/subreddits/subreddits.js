@@ -10,8 +10,6 @@ export const Subreddits = () => {
   useEffect(() => {
     dispatch(getSubreddits());
   }, [dispatch]);
-  
-  console.log(subreddits)
 
   return (
     <ul>
