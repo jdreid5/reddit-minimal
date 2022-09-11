@@ -2,12 +2,12 @@
   height: 25px;
   width: 25px;
   border-radius: 50%;
-  border: 2px solid blanchedalmond;
+  border: 2px solid #D7DADC;
   background-color: aliceblue;
   margin: 3px 10px 0 0;
 }
 
-ul {
+.subUl {
   padding-left: 8%;
   display: flex;
   flex-direction: column;
@@ -15,18 +15,18 @@ ul {
   justify-content: space-between;
 }
 
-li {
+.subLi {
   list-style-type: none;
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
 
-li a {
-  color: blanchedalmond;
+.subLi a {
+  color: #D7DADC;
   text-decoration: none;
 }
 
-li a:hover {
+.subLi a:hover {
   color: rgb(255, 166, 166)
 }

@@ -12,10 +12,10 @@ export const Subreddits = () => {
   }, [dispatch]);
 
   return (
-    <ul>
+    <ul className={styles.subUl}>
         {
           subreddits.slice(0, 14).map((subreddit) => (
-            <li key={subreddit.id}>
+            <li key={subreddit.id} className={styles.subLi}>
                 <img className={styles.subIcon} src={subreddit.icon_img || `https://api.adorable.io/avatars/25/${subreddit.display_name}`} alt={`${subreddit.display_name_prefixed}`}/>
                 <a href='#'>{subreddit.display_name_prefixed}</a>
             </li>

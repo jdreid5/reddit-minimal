@@ -1,0 +1,93 @@
+.postUl {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.postLi {
+  background-color: #343434;
+  list-style-type: none;
+  border: 1px solid #D7DADC;
+  border-radius: 5px;
+  margin-bottom: 30px;
+  /* padding: 1%; */
+  display: grid;
+  grid-template-areas: "votes title"
+                       "media media"
+                       "comments comments";
+  grid-template-rows: fit-content(100px) fit-content(500px) 80px;
+  grid-template-columns: 1fr 10fr;
+  color: #D7DADC;
+}
+
+.postLi .votes {
+  grid-area: votes;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #272727;
+  border-top-left-radius: 5px;
+}
+
+.postLi .votes h5{
+  margin: 0 auto;
+}
+
+.postLi .titles {
+  grid-area: title;
+}
+
+.postLi .titles h4 {
+  font-weight: 500;
+}
+
+.postLi h4 {
+  margin: 1.5% 1% -5px 1%;
+}
+
+.postLi h2 {
+  margin: 2% 1%;
+}
+
+.postLi .media {
+  grid-area: media;
+  overflow: hidden;
+  background-color: #272727;
+  border-top: 1px solid #474A4B;
+  border-bottom: 1px solid #474A4B;
+}
+
+.postLi .media .images {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.postLi .media .videos {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.postLi .media .link {
+  padding: 2% 5% 2% 10%;
+}
+
+.postLi .media .link a {
+  color: antiquewhite;
+}
+
+.postLi .commentsBar {
+  grid-area: comments;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.postLi .commentsBar h3 {
+  padding: 1%;
+  font-size: 1rem;
+  font-weight: 300;
+}
