@@ -10,6 +10,7 @@ export const getPostObject = createAsyncThunk(
   }
 )
 
+
 export const postSlice = createSlice({
   name: 'Post',
   initialState: {
@@ -17,7 +18,13 @@ export const postSlice = createSlice({
     isLoading: false,
     hasError: false
   },
-  reducers: {},
+  reducers: {
+    filterPostObject: (state, action) => {
+      state.posts = state.posts.filter((post) => {
+        return post.title.toLowerCase().includes(action.payload.toLowerCase());
+      });
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getPostObject.pending, (state) => {
@@ -38,3 +45,4 @@ export const postSlice = createSlice({
 
 export const selectPosts = (state) => state.post.posts;
 export default postSlice.reducer;
+export const { filterPostObject } = postSlice.actions;
