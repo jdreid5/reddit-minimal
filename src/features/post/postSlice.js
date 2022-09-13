@@ -10,7 +10,6 @@ export const getPostObject = createAsyncThunk(
   }
 )
 
-
 export const postSlice = createSlice({
   name: 'Post',
   initialState: {
@@ -43,6 +42,7 @@ export const postSlice = createSlice({
   }
 });
 
+export const selectLoading = (state) => state.post.isLoading;
 export const selectPosts = (state) => state.post.posts;
 export default postSlice.reducer;
 export const { filterPostObject } = postSlice.actions;

@@ -1,11 +1,14 @@
 import React, { useEffect } from "react";
-import { getPostObject, selectPosts } from "./postSlice";
+import { getPostObject, selectLoading, selectPosts } from "./postSlice";
 import { useDispatch, useSelector } from "react-redux";
 import styles from './Post.module.css';
+import { Comments } from "../comments/Comments";
 
 export const Post = () => {
   const dispatch = useDispatch();
   const posts = useSelector(selectPosts);
+  const isLoading = useSelector(selectLoading);
+  let toggle = false;
 
   useEffect(() => {
     dispatch(getPostObject());
@@ -13,9 +16,18 @@ export const Post = () => {
 
   console.log(posts);
 
+  const handleCommentsClick = () => {
+    if (!toggle) {
+      toggle = true;
+    } else {
+      toggle = false;
+    }
+  }
+
   return (
     <ul className={styles.postUl}>
       {
+        isLoading ? <div className={styles.loading}>Loading</div> :
         posts.map((post) => (
           <li key={post.id} className={styles.postLi}>
             <div className={styles.votes}>
@@ -32,7 +44,7 @@ export const Post = () => {
 
               {(!post.media) ? null :
                 (post.media.reddit_video) ?
-                <video preload="auto" controls muted className={styles.videos}>
+                <video preload="auto" controls className={styles.videos}>
                   <source src={post.media.reddit_video.fallback_url} type="video/mp4" />
                 </video> 
                 : null}
@@ -42,8 +54,9 @@ export const Post = () => {
             <div className={styles.commentsBar}>
               <h3>u/{post.author}</h3>
               <h3>Posted {Math.round(((new Date().getTime()/1000) - post.created_utc)/3600)} hours ago</h3>
-              <h3>{post.num_comments} comments</h3>
+              <h3 onClick={handleCommentsClick}>{post.num_comments} comments</h3>
             </div>
+            {toggle ? <Comments /> : null}
           </li>
         ))
       }
