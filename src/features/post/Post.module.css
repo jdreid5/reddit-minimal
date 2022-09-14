@@ -14,7 +14,8 @@
   display: grid;
   grid-template-areas: "votes title"
                        "media media"
-                       "comments comments";
+                       "comments comments"
+                       "text text";
   grid-template-rows: fit-content(100px) fit-content(500px) 80px;
   grid-template-columns: 1fr 10fr;
   color: #D7DADC;
@@ -89,6 +90,49 @@
   padding: 1%;
   font-size: 1rem;
   font-weight: 300;
+}
+
+.postLi .commentsBar button {
+  background: none;
+  border: none;
+  color: #D7DADC;
+  cursor: pointer;
+}
+
+.postLi .commentsArea button:hover { 
+  color: rgb(255, 166, 166)
+}
+
+.postLi .commentsArea {
+  grid-area: text;
+  background-color: #272727;
+  border-top: 1px solid #474A4B;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.postLi .commentsArea ul {
+  padding: 5px 20px 20px;
+}
+
+.postLi .commentsArea ul li {
+  list-style-type: none;
+  overflow-wrap: break-word;
+  border-bottom: 1px solid #474A4B;
+}
+
+.postLi .commentsArea ul li a {
+  color: #4fbcff;
+}
+
+.postLi .commentsArea ul li h5 {
+  margin-bottom: 0;
+  color: antiquewhite;
+  font-weight: 500;
+}
+
+.postLi .commentsArea ul li p {
+  margin-top: 0;
 }
 
 .loading {

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { getPostObject, selectLoading, selectPosts } from "./postSlice";
 import { useDispatch, useSelector } from "react-redux";
 import styles from './Post.module.css';
@@ -8,19 +8,17 @@ export const Post = () => {
   const dispatch = useDispatch();
   const posts = useSelector(selectPosts);
   const isLoading = useSelector(selectLoading);
-  let toggle = false;
+  const [ display, setDisplay ] = useState({display: 'none'});
 
   useEffect(() => {
     dispatch(getPostObject());
   }, [dispatch])
 
-  console.log(posts);
-
   const handleCommentsClick = () => {
-    if (!toggle) {
-      toggle = true;
+    if (display.display === 'none') {
+      setDisplay({display: 'block'});
     } else {
-      toggle = false;
+      setDisplay({display: 'none'});
     }
   }
 
@@ -54,9 +52,9 @@ export const Post = () => {
             <div className={styles.commentsBar}>
               <h3>u/{post.author}</h3>
               <h3>Posted {Math.round(((new Date().getTime()/1000) - post.created_utc)/3600)} hours ago</h3>
-              <h3 onClick={handleCommentsClick}>{post.num_comments} comments</h3>
+              <button onClick={handleCommentsClick}><h3>{post.num_comments} comments</h3></button>
             </div>
-            {toggle ? <Comments /> : null}
+            <div style={display} className={styles.commentsArea}><Comments permalink={post.permalink} /></div>
           </li>
         ))
       }

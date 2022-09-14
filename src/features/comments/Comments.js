@@ -1,15 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
 import { useSelector } from "react-redux";
-import styles from './Comments.module.css';
-import { selectComments, selectCommentsLoading } from "./commentsSlice";
 
-export const Comments = () => {
-  const comments = useSelector(selectComments);
-  const loadingComments = useSelector(selectCommentsLoading);
+export const Comments = (props) => {
+  const { permalink } = props;
+  const [ localComments, setLocalComments ] = useState([]);
 
-  console.log(comments);
+  useEffect(() => {
+    const getComments = async () => {
+      const response = await fetch(`https://www.reddit.com${permalink}.json`);
+      const json = await response.json();
+      setLocalComments(json[1].data.children.map((comment) => comment.data));
+    };
+
+    getComments();
+  }, [permalink]);
 
   return (
-    <div></div>
+    <ul>
+      {
+        localComments.slice(0, 19).map((comment) => (
+          <li key={comment.id}>
+            <h5>u/{comment.author}</h5>
+            <ReactMarkdown>{comment.body}</ReactMarkdown>
+          </li>
+        ))
+      }
+    </ul>
   )
 }
