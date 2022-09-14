@@ -4,7 +4,6 @@
   border-radius: 50%;
   border: 2px solid #D7DADC;
   background-color: aliceblue;
-  margin: 3px 10px 0 0;
 }
 
 .subUl {
@@ -22,11 +21,16 @@
   align-items: center;
 }
 
-.subLi a {
+.subLi button {
   color: #D7DADC;
   text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
-.subLi a:hover {
+.subLi button:hover {
   color: rgb(255, 166, 166)
 }

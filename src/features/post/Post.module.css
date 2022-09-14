@@ -31,6 +31,22 @@
   border-top-left-radius: 5px;
 }
 
+.postLi .votes button {
+  background: none;
+  border: none;
+  height: 26px;
+}
+
+.postLi .votes button:hover {
+  cursor: pointer;
+  stroke:rgb(255, 166, 166)
+}
+
+.postLi .votes button svg {
+  fill :#D7DADC;
+
+}
+
 .postLi .votes h5{
   margin: 0 auto;
 }
@@ -77,6 +93,7 @@
 
 .postLi .media .link a {
   color: antiquewhite;
+  overflow-wrap: break-word;
 }
 
 .postLi .commentsBar {

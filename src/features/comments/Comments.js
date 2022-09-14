@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
-import { useSelector } from "react-redux";
 
 export const Comments = (props) => {
   const { permalink } = props;
