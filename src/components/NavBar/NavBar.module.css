@@ -24,6 +24,10 @@
   padding-top: 4px;
 }
 
+.svgIcon:hover {
+  cursor: pointer;
+}
+
 .svgIcon:active {
   fill: rgb(255, 166, 166);
 }
