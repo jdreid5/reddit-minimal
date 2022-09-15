@@ -28,4 +28,4 @@ In the future I'd like to add tests using Jest and React Testing Library, as wel
 
 ## Launch
 
-To access this app 
+To access this app please go to https://jdreid5-reddit-minimal.netlify.app
