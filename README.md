@@ -1,46 +1,31 @@
-# Getting Started with Create React App and Redux
+# RedditMinimal README
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+## Aim
 
-## Available Scripts
+The aim of this project was to build a simple, minimal web app that received posts and comments from Reddit's JSON API and presented them in a simplified user interface emulating the Reddit homepage. 
 
-In the project directory, you can run:
+## Technologies and Software used
 
-### `npm start`
+*HTML
+*CSS
+*JavaScript
+*React
+*Redux
+*Git and Github
+*Command line and file navigation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+*Search function that allows the current rendered posts to be filtered based on the search term. Clicking the 'x' re-renders the posts from r/all.
+*Initially, displayed posts are retrieved from the r/all feed. Clicking the icon in the top left refreshes this feed. 
+*A list of the most popular subreddits are displayed on the right. Clicking on these will fetch the top 25 posts from this subreddit.
+*The top 20 comments from each post can be displayed in a container by clicking the comments button at the bottom right of each post. 
+*The total votes retrieved from Reddit are displayed in the top left of each post. The JSON API is limited to no write operations so clicking the arrows next to this emulates upvote/downvote functionality.
 
-### `npm test`
+## Future Work
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+In the future I'd like to add tests using Jest and React Testing Library, as well as upvote/downvote functionality on individual comments.
 
-### `npm run build`
+## Launch
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+To access this app 
