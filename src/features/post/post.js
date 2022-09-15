@@ -1,36 +1,52 @@
-import React, { useState } from "react";
-// import { getPostObject, selectLoading, selectPosts } from "./postSlice";
-// import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
 import styles from './Post.module.css';
 import { Comments } from "../comments/Comments";
 
 export const Post = (props) => {
-  // const dispatch = useDispatch();
-  // const posts = useSelector(selectPosts);
-  // const isLoading = useSelector(selectLoading);
   const { post } = props;
   const [ display, setDisplay ] = useState({display: 'none'});
-
-  // useEffect(() => {
-  //   dispatch(getPostObject());
-  // }, [dispatch])
+  const [ upvote, setUpvote ] = useState({fill: '#D7DADC'});
+  const [ downvote, setDownvote ] = useState({fill: '#D7DADC'});
+  const [ voteCountColor, setVoteCountColor ] = useState({color: '#D7DADC'});
+  const [ voteCount, setVoteCount ] = useState(post.ups);
 
   const handleCommentsClick = () => {
-    if (display.display === 'none') {
-      setDisplay({display: 'block'});
-    } else {
-      setDisplay({display: 'none'});
-    }
+    (display.display === 'none') ? setDisplay({display: 'block'}) : setDisplay({display: 'none'});
   }
 
-  // console.log(posts);
+  const handleUpvoteClick = () => {
+    const clickUpvote = upvote.fill === '#D7DADC' ? setUpvote({fill: 'rgb(200, 255, 166)'}) : setUpvote({fill: '#D7DADC'});
+    const clickDownvote = downvote.fill === 'rgb(255, 166, 166)' ? setDownvote({fill: '#D7DADC'}) : null;
+    clickUpvote();
+    clickDownvote();
+  }
+
+  const handleDownvoteClick = () => {
+    const clickDownvote = downvote.fill === '#D7DADC' ? setDownvote({fill: 'rgb(255, 166, 166)'}) : setDownvote({fill: '#D7DADC'});
+    const clickUpvote = upvote.fill === 'rgb(200, 255, 166)' ? setUpvote({fill: '#D7DADC'}) : null;
+    clickDownvote();
+    clickUpvote();
+  }
+
+  useEffect(() => {
+    if (upvote.fill === 'rgb(200, 255, 166)') {
+      setVoteCountColor({color: 'rgb(200, 255, 166)'});
+      setVoteCount(post.ups + 1)
+    } else if (downvote.fill === 'rgb(255, 166, 166)') {
+      setVoteCountColor({color: 'rgb(255, 166, 166)'});
+      setVoteCount(post.ups - 1)
+    } else {
+      setVoteCountColor({color: '#D7DADC'});
+      setVoteCount(post.ups)
+    }
+  }, [downvote.fill, upvote.fill, post.ups])
 
   return (
     <li key={post.id} className={styles.postLi}>
       <div className={styles.votes}>
-        <button><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="m7.293 13.293 1.414 1.414L12 11.414l3.293 3.293 1.414-1.414L12 8.586l-4.707 4.707z"/></svg></button> 
-        <h5>{post.ups}</h5>
-        <button><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M12 12.586 8.707 9.293l-1.414 1.414L12 15.414l4.707-4.707-1.414-1.414L12 12.586z"/></svg></button>
+        <button onClick={handleUpvoteClick}><svg style={upvote} xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="m7.293 13.293 1.414 1.414L12 11.414l3.293 3.293 1.414-1.414L12 8.586l-4.707 4.707z"/></svg></button> 
+        <h5 style={voteCountColor}>{voteCount}</h5>
+        <button onClick={handleDownvoteClick}><svg style={downvote} xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M12 12.586 8.707 9.293l-1.414 1.414L12 15.414l4.707-4.707-1.414-1.414L12 12.586z"/></svg></button>
       </div>
       <div className={styles.titles}>
         <h4>{post.subreddit_name_prefixed}</h4>

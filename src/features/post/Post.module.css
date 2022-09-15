@@ -1,10 +1,3 @@
-.postUl {
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
 .postLi {
   background-color: #343434;
   list-style-type: none;
@@ -39,12 +32,11 @@
 
 .postLi .votes button:hover {
   cursor: pointer;
-  stroke:rgb(255, 166, 166)
+  stroke: #424141;
 }
 
 .postLi .votes button svg {
   fill :#D7DADC;
-
 }
 
 .postLi .votes h5{
@@ -150,13 +142,4 @@
 
 .postLi .commentsArea ul li p {
   margin-top: 0;
-}
-
-.loading {
-  color: #D7DADC;
-  font-style: italic;
-  font-weight: bold;
-  text-align: center;
-  font-size: 2rem;
-  padding-top: 20px;
 }
